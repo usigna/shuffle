@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Shuffle</title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/style.min.css">
+  <script src="js/app.js"></script>
+</head>
+
+<body>
+  <!-- Informacja dla osoby sprawdzającej kod: specjalizuję się w dostępności stron internetowych (WCAG, a11y), czyli koduję tak, aby np. osoba niewidoma mogła "zobaczyć" stronę. Ktoś mi poradził, aby opisywać fragmenty kodu związane z tym, ponieważ zadanie może sprawdzać ktoś dla kogo jest to "nowość". W takim przypadku myślę, że moje zadanie może być też takim minimalistycznym poradnikiem dla kogoś. -->
+
+  <!-- Nagłówki w czytnikach ekranowych (oprogramowanie, które zamienia tekst pisany na mowę) pełnią rolę nawigacji. Dlatego ważne jest zachowanie odpowiedniej kolejności. Zawsze. -->
+  <!-- Dlatego tutaj mamy najpierw h1 -->
+  <h1 class="sr-only">Shuffle</h1>
+  <!-- Klasa "sr-only" działa tak, że czytnik widzi dany tekst, ale osoba "widoma" (standardowy użytkownik) już nie, czyli nie wpływa na sam wygląd strony. -->
+
+  <main class="main">
+    <section class="section">
+      <div class="section__wrapper wrapper">
+        <div class="left-content">
+          <div class="text-content">
+            <!-- każda sekcja musi mieć swój nagłówek, tu wg kolejności będzie to h2 -->
+            <h2 class="title">Lorem ipsum</h2>
+            <!-- wiem, że niektórzy programiści uważają, że tu powinno być h3, ale wtedy to jest błąd dostępności, ponieważ powstaje "pusty nagłówek" -->
+            <p class="subtitle">
+              <span class="subtitle--different-color">Lorem ipsum</span> dolor sit amet consectetur.
+            </p>
+            <p class="text">
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Suscipit est facilis aspernatur optio ipsum, provident sed laborum deserunt dignissimos delectus! Lorem, ipsum.
+            </p>
+            <div class="button">
+              <a href="#" class="btn">Action</a>
+            </div>
+          </div>
+        </div>
+        <div class="right-content">
+          <div class="items">
+            <div class="item">
+              <div class="icon icon--blue">
+                <!-- wygląd budynku się trochę różni, bo taki znalazłam w fontawesome, a podobno używanie ikon sprawia, że strona szybciej się ładuje niż w przypadku obrazków (img, png) -->
+                <!-- aria-hidden="true" ukrywa treść dla czytnika ekranowego, span zamiast i, ponieważ tak jest w dokumentacji fontawesome -->
+                <span class="fas fa-city" aria-hidden="true"></span>
+              </div>
+              <h3 class="subtitle subtitle--small">Lorem ipsum dolor sit amet consectetur.</h3>
+              <p class="text text--small">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eveniet magni iure libero.</p>
+            </div>
+            <div class="item">
+              <div class="icon icon--green">
+                <span class="fas fa-city" aria-hidden="true"></span>
+              </div>
+              <h3 class="subtitle subtitle--small">Lorem ipsum dolor sit amet consectetur.</h3>
+              <p class="text text--small">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eveniet magni iure libero.</p>
+            </div>
+            <div class="item">
+              <div class="icon icon--orange">
+                <span class="fas fa-city" aria-hidden="true"></span>
+              </div>
+              <h3 class="subtitle subtitle--small">Lorem ipsum dolor sit amet consectetur.</h3>
+              <p class="text text--small">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eveniet magni iure libero.</p>
+            </div>
+            <div class="item">
+              <div class="icon icon--violet">
+                <span class="fas fa-city" aria-hidden="true"></span>
+              </div>
+              <h3 class="subtitle subtitle--small">Lorem ipsum dolor sit amet consectetur.</h3>
+              <p class="text text--small">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eveniet magni iure libero.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="decoration"></div>
+    </section>
+  </main>
+
+</body>
+</html>

@@ -1,0 +1,330 @@
+/* import */
+@import "./modules/variables";
+@import "./modules/mixins";
+@import "./partials/normalize";
+
+/* general */
+*,
+*::before,
+*::after {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  scroll-behavior: smooth;
+  font-size: 62.25%; /* ten kod sprawia, że 1rem = 10px, co ułatwia kodowanie responsywnych stron z projektu */
+  background: rgb(233,235,247);
+  background: -o-linear-gradient(277deg, rgba(233,235,247,1) 0%, rgba(247,247,252,1) 70%, rgba(255,255,255,1) 100%);
+  background: linear-gradient(173deg, rgba(233,235,247,1) 0%, rgba(247,247,252,1) 70%, rgba(255,255,255,1) 100%);
+  overflow-x: hidden;
+  z-index: 0;
+}
+
+.wrapper {
+  width: 90%;
+  max-width: 1250px;
+  margin: 0 auto;
+  font-size: 1.6rem;
+  font-family: "Arial", sans-serif;
+  position: relative;
+  z-index: 2;
+}
+
+/* web accessibility */
+.sr-only {
+  border: 0 !important;
+  clip: rect(1px, 1px, 1px, 1px) !important;
+  -webkit-clip-path: inset(50%) !important;
+  clip-path: inset(50%) !important;
+  height: 1px !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  position: absolute !important;
+  width: 1px !important;
+  white-space: nowrap !important;
+}
+
+/* Każdy link i przycisk musi mieć widoczy efekt najechania na niego za pomocą tabulatora, ponieważ nie każdy użytkownik może korzystać z myszki komputerowej. Zaleca się kolor niebieski, ponieważ przeciętny daltonista odróżnia ten kolor, a np. czerwonego nie. */
+a:focus,
+button:focus {
+  border: 2px solid #1a237e;
+}
+
+.main {
+  height: 100%;
+}
+
+/* section */
+.section {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.section__wrapper {
+  @include flex(column, center, center);
+
+  @media screen and (min-width: $largeWidth) {
+    @include flex(row, center, center);
+  }
+}
+
+.left-content,
+.right-content {
+  width: 100%;
+
+  @media screen and (min-width: $largeWidth) {
+    width: 50%;
+  }
+}
+
+.left-content {
+  padding: 2rem 0;
+  @include flex(column, flex-start, center);
+
+  @media screen and (min-width: $largeWidth) {
+    padding: 0;
+  }
+}
+
+.decoration {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  overflow: hidden;
+
+  &::before,
+  &::after {
+    content: "";
+    width: 600px;
+    height: 600px;
+    background: rgb(233,235,247);
+    background: -o-linear-gradient(277deg, rgba(233,235,247,1) 32%, rgba(247,247,252,1) 87%, rgba(255,255,255,1) 100%);
+    background: linear-gradient(173deg, rgba(233,235,247,1) 32%, rgba(247,247,252,1) 87%, rgba(255,255,255,1) 100%);
+    position: absolute;
+  }
+
+  &::before {
+    border-radius: 600px 0 0 0;
+    left: 0;
+    margin-left: -8%;
+    bottom: 0;
+    margin-bottom: -12%;
+  }
+
+  &::after {
+    -webkit-clip-path: polygon(0 0, 100% 100%, 100% 0);
+            clip-path: polygon(0 0, 100% 100%, 100% 0);
+    right: 0;
+    margin-right: -17%;
+    top: 0;
+  }
+}
+
+/* text */
+.text-content {
+  @media screen and (min-width: $largeWidth) {
+    max-width: 520px;
+  }
+}
+
+.title {
+  margin: 0 0 1rem;
+  color: #6b78c5;
+  font-weight: 300;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+}
+
+.subtitle {
+  font-size: 3.5rem;
+  line-height: 1.2;
+  padding: 0;
+  margin: 0 0 1.5rem;
+  color: #1a237e;
+
+  &--different-color {
+    color: #314efe;
+  }
+
+  &--small {
+    font-size: 2rem;
+    line-height: 1.5;
+  }
+
+  @media screen and (min-width: $largeWidth) {
+    font-size: 5rem;
+
+    &--small {
+      font-size: 2rem;
+      margin: 0 0 1rem;
+    }
+  }
+}
+
+.text {
+  color: #6371c2;
+  line-height: 1.8;
+  margin: 0 0 1.5rem;
+
+  &--small {
+    font-size: 1.4rem;
+    line-height: 1.5;
+  }
+}
+
+/* button */
+.button {
+  max-width: 85px;
+  margin-top: 2rem;
+}
+
+.btn {
+  display: block;
+  color: $whiteColor;
+  background: #ffab02;
+  font-size: 1.4rem;
+  font-weight: 600;
+  padding: 1rem 1.5rem;
+  border-radius: 5px;
+  text-transform: uppercase;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+
+  span {
+    position: absolute;
+    background: $whiteColor;
+    background: -o-radial-gradient(circle, #ffab02 0%, #ffffff 100%);
+    background: radial-gradient(circle, #ffab02 0%, #ffffff 100%);
+    -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+    pointer-events: none;
+    border-radius: 50%;
+    -webkit-animation: btnAnimation 1s linear infinite;
+            animation: btnAnimation 1s linear infinite;
+  }
+}
+
+@-webkit-keyframes btnAnimation {
+  0% {
+    width: 0;
+    height: 0;
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 0.6;
+  }
+  100% {
+    width: 500px;
+    height: 500px;
+    opacity: 0.2;
+  }
+}
+
+@keyframes btnAnimation {
+  0% {
+    width: 0;
+    height: 0;
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 0.6;
+  }
+  100% {
+    width: 500px;
+    height: 500px;
+    opacity: 0.2;
+  }
+}
+
+/* items */
+.items {
+  @include flex(row, flex-start, space-around);
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  padding: 40px 0;
+  position: relative;
+
+  &::before {
+    content: "";
+    height: 0;
+    width: 0;
+    border: 100px solid transparent;
+    border-bottom: 200px solid rgb(233,235,247);
+    -webkit-transform: rotate(-50deg);
+        -ms-transform: rotate(-50deg);
+            transform: rotate(-50deg);
+    position: absolute;
+    top: 15%;
+    left: 20%;
+    z-index: 0;
+  }
+
+  @media screen and (min-width: $largeWidth) {
+    @include flex(row, flex-start, space-between);
+  }
+}
+
+.item {
+  width: 100%;
+  min-height: 200px;
+  background: $whiteColor;
+  border: 2px solid #eaeaee;
+  border-radius: 5px;
+  padding: 20px 20px 5px;
+  margin-bottom: 5px;
+  position: relative;
+
+  &:nth-of-type(2),
+  &:nth-of-type(4) {
+    margin-top: 20px;
+  }
+
+  @media screen and (min-width: $mediumWidth) {
+    width: 48%;
+  }
+
+  @media screen and (min-width: $largeWidth) {
+    max-width: 288px;
+  }
+}
+
+.icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 5px;
+  @include flex(row, center, center);
+  margin-bottom: 20px;
+
+  /* Tło tutaj powinno być jako rgba, ale w przypadku projektu z png taki sposób jest pewniejszy jeżeli chodzi o dokładne kolory. Wtedy można by było też wykorzystać zmienne. */
+  &--blue {
+    color: #1e88e5;
+    background: #bbdefb;
+  }
+
+  &--green {
+    color: #43a048;
+    background: #c8e6c9;
+  }
+
+  &--orange {
+    color: #f9a825;
+    background: #fff9c4;
+  }
+
+  &--violet {
+    color: #8e25aa;
+    background: #e1bee7;
+  }
+}
